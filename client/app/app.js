@@ -22,10 +22,19 @@ angular.module('lookoutApp',[
         templateUrl: 'app/results/results.html',
         controller: 'resultsCtrl'
       })
+      .otherwise({
+        templateUrl: 'app/splash/splash.html',
+        controller: 'splashCtrl'
+      })
   })
   .factory('dataFactory', function($http) {
-    const getAll = function() {
-      return $http.get('/results')
+    const getAll = function(location) {
+      console.log(location)
+      return $http({
+        method: 'GET',
+        url: '/results',
+        params: {location: location}
+      })
       .then(
       function(results){
         //Successful get request function and message
@@ -38,11 +47,11 @@ angular.module('lookoutApp',[
         });
     }
 
-    const getFiltered = function(catagory) {
+    const getFiltered = function(category, location) {
       return $http({
         method: 'GET',
         url: '/filtered',
-        params: {catagory:catagory}
+        params: {category:category, address:location}
       })
       .then(
         function(results){
@@ -72,10 +81,30 @@ angular.module('lookoutApp',[
           function(err){
             throw new Error(err)
           });
-        }
+      }
+
       return {
         getAll : getAll,
         getFiltered : getFiltered,
         getEvent : getEvent
     }
-  });
+  })
+  .factory('eventFactory', function($http) {
+    var current = {}
+    current.insertEvent = function(value) {
+      current.event = value;
+    }
+
+    return current;
+  })
+  .factory('resultsFactory', function($http) {
+    var current = {}
+    current.insertLocation = function(location) {
+      current.location = location;
+    }
+    current.insertResults = function(results) {
+      current.results = results;
+    }
+
+    return current
+  })
