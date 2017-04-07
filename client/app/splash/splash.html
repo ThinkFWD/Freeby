@@ -1,3 +1,115 @@
-<div class="align">
-  <h1>Splash</h1>
+<nav ng-controller="splashCtrl" class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    <a class="navbar-brand" href="/#!/splash"><i class="glyphicon glyphicon-tags"></i> freeby</a>
+  </div>
+  <!-- <div class="btn-group headerButton pull-right">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Login <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li class='fbLogin'><button >Facebook Login</button></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign up</a></li>
+          </ul>
+          This is us trying to work on Auth, and not getting to it...
+    </div> -->
+</nav>
+
+
+<div class="splashPageImg">
+  <div class="splash-title">
+    <div class="searchHeader">What's happening today?</div>
+    <div class='searchSubHeader'>Enter your address below.</div>
+  </div>
+
+  <form class="form-inline splash-form"  ng-submit="searching = true; getEvents(location)">
+    <div class="form-group">
+      <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" ng-click="locating = true; getLocation()">
+        <i ng-class="{'fa fa-location-arrow fa-2x fa-fw': !locating, 'fa fa-refresh fa-spin fa-2x fa-fw': locating }" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="form-group">
+      <input class="search-input" ng-model="location" type="text" name="search" placeholder="  Where are you?" value="{{ address }}" required/>
+    </div>
+    <div class="form-group">
+      <button class="btn splash-submit" type="submit">
+        <i ng-class="{'fa fa-search': !searching, 'fa fa-refresh fa-spin submitter': searching }" aria-hidden="true"></i> Search
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid">
+  <div class="catBlurb">
+
+    <h2>You can also check out any of these categories</h2>
+    <hr class='event-hr splashHr'>
+  </div>
+  <div class="catButtons">
+    <!-- <button class="btn" ng-click="getFilteredEvents(109)">Travel</button> -->
+    <button class="btn" ng-click="getFilteredEvents(103)">Music</button>
+    <button class="btn" ng-click="getFilteredEvents(110)">Food & Drink</button>
+    <button class="btn" ng-click="getFilteredEvents(102)">Tech</button>
+    <button class="btn lastBtn" ng-click="getFilteredEvents(104)">Film & Media</button>
+  </div>
+  <div class="down"><i class="icon fa fa-chevron-down faa-pulse animated" aria-hidden="true"></i></div>
+  <div class="row aboutUs">
+    <div class='aboutUsHeader'>Development Team</div>
+    <div class='Developer col-sm-3'>
+      <a href="http://jpmarra.com">
+        <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/22504731?v=3&s=460'>
+      </a>
+      <h4>JP Marra</h4>
+      <h5>Product Owner</h5>
+      <h5>Software Engineer</h5>
+      <p class='contacts'>
+        <a href='https://github.com/jpmarra'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/jpmarra/' ><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <a href="https://github.com/JEngdahl">
+        <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/21135305?v=3&s=460'>
+      </a>
+      <h4>Jarett Engdahl</h4>
+      <h5>Software Engineer</h5>
+      <p class='contacts'>
+        <a href='https://github.com/JEngdahl'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/jengdahl-software/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <a href="https://github.com/kylegreene">
+        <img class ='profilePicture img-circle' src='https://avatars0.githubusercontent.com/u/25232894?v=3&s=460'>
+      </a>
+      <h4>Kyle Greene</h4>
+      <h5>Software Engineer</h5>
+      <p class='contacts'>
+        <a href='https://github.com/kylegreene' ><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/kylesheagreene/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <a href="http://michaeljchan.com/">
+        <img class ='profilePicture img-circle' src='http://michaeljchan.com/image/profile.PNG'>
+      </a>
+      <h4>Michael Chan</h4>
+      <h5>Scrum Master</h5>
+      <h5>Software Engineer</h5>
+      <p class='contacts'>
+        <a href='https://github.com/ThinkFWD' class='gitIcon'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/mikethikfwd/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <h6 class='copyrightText'>© 2017 freeby All rights reserved. | <a class='githubLink' href='https://github.com/truly-stacked/lookOUT/'>freeby GitHub</a></h6>
 </div>
